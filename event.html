@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>특별한 메시지</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f5f6f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            width: 360px;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #fee500;
+            color: #3c1e1e;
+            padding: 16px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            position: relative;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .message {
+            background-color: #f8f8f8;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .message:after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: -10px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #f8f8f8 transparent;
+            transform: rotate(90deg);
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            background-color: #fd79a8;
+        }
+        
+        .profile-name {
+            font-weight: bold;
+        }
+        
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #fd79a8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .button:hover {
+            background-color: #e84393;
+        }
+        
+        .hidden-content {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .heart {
+            color: #fd79a8;
+            font-size: 24px;
+            margin: 0 5px;
+        }
+        
+        .proposal-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #e84393;
+        }
+        
+        .proposal-message {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            혜윤페이
+        </div>
+        <div class="content" id="main-content">
+            <div class="profile">
+                <div class="profile-img">♥</div>
+                <div class="profile-name">귀여운 혜윤이에게</div>
+            </div>
+            <div class="message">
+                혜윤이만 누르기 가능🐧. 아래 버튼 누르기 🔽
+            </div>
+            <button class="button" id="proposal-button">왕버튼</button>
+        </div>
+        <div class="hidden-content" id="proposal-content">
+            <span class="heart">💕</span>
+            <span class="proposal-text">혜윤이와 의정이의 왕 귀여운 사진</span>
+            <span class="heart">💕</span>
+            <div class="proposal-message">
+                우리 만난 날 2024.11.21<br>
+                우리의 첫 해외여행지<br>
+                코타키나발루!!<br>
+                앞으로도 나랑 재밌게 놀아줘야해ㅐㅐ<br>
+                혜윤이의 왕 귀여운 의정이가.
+            </div>
+            <img src="/api/placeholder/300/200" alt="우리의 사진" />
+            <div class="footer">
+                - 만우절 이벤트 기념 [의정이] -
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('proposal-button').addEventListener('click', function() {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('proposal-content').style.display = 'block';
+            
+            // 간단한 애니메이션 효과
+            const hearts = document.querySelectorAll('.heart');
+            hearts.forEach(heart => {
+                let scale = 1;
+                let growing = true;
+                
+                setInterval(() => {
+                    if (growing) {
+                        scale += 0.02;
+                        if (scale >= 1.3) growing = false;
+                    } else {
+                        scale -= 0.02;
+                        if (scale <= 1) growing = true;
+                    }
+                    heart.style.transform = `scale(${scale})`;
+                }, 50);
+            });
+        });
+    </script>
+</body>
+</html>
